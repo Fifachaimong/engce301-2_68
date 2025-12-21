@@ -220,29 +220,33 @@ main {
 
 /* Mobile (<= 480px) */
 @media (max-width: 480px) {
+  /* เพิ่ม spacing ระหว่าง section */
+  main, .section {
+    padding: 1rem;
+  }
+
+  /* ลดขนาดฟอนต์เล็กลงอีกนิดสำหรับมือถือแคบ */
   body {
-    font-size: 0.95rem; /* TODO: นักศึกษาปรับเองได้ ถ้ารู้สึกเล็ก/ใหญ่ไป */
+    font-size: 0.9rem;
   }
 
+  /* ปรับ logo / header ให้เล็กลง */
   .logo-area h1 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
-  .section-header h2 {
-    font-size: 1.3rem;
-  }
-
-  .cards-row {
-    flex-direction: column;
-  }
-
-  .main-nav {
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
+  /* navigation แนวตั้ง แตะง่าย */
   .main-nav a {
+    padding: 0.6rem 0.8rem;
     width: 100%;
+  }
+
+  /* Card / tasks / extra layout เป็นแนวตั้งเต็มหน้าจอ */
+  .cards-row, 
+  .tasks-layout, 
+  .extra-layout {
+    flex-direction: column;
+    gap: 0.8rem;
   }
 
   /* TODO: เลือกว่าจะแสดง/ซ่อน element ใดบนจอเล็ก
