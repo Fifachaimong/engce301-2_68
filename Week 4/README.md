@@ -124,14 +124,14 @@ _กำหนดการของงานทั้งหมดที่ต้�
 กรอกข้อมูลหลังส่งงาน
 
 - **GitHub Repository:**  
-  https://github.com/_____
+  https://github.com/Fifachaimong/engce301-2_68/tree/main/Week%204
 
 - **GitHub Pages URL:**  
-  https://Fifachaimong.github.io/engce301-week4-ux-responsive/
+  https://Fifachaimong.github.io/engce301-2-68.vercel.app/
 
 - **Screenshots:**  
-  - Desktop ✔  
-  - Mobile ✔  
+  - Desktop ✔
+  - Mobile ✔ 
 
 ---
 
