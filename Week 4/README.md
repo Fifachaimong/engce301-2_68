@@ -127,7 +127,7 @@ _กำหนดการของงานทั้งหมดที่ต้�
   https://github.com/Fifachaimong/engce301-2_68/tree/main/Week%204
 
 - **GitHub Pages URL:**  
-  https://Fifachaimong.github.io/engce301-2_68/
+  https://Fifachaimong.github.io/engce301-2_68/Week4/
 
 - **Screenshots:**  
   - Desktop ✔
