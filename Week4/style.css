@@ -241,7 +241,7 @@ main {
     width: 100%;
   }
 
-  /* Card / tasks / extra layout เป็นแนวตั้งเต็มหน้าจอ */
+  /* Card / tasks / extra layout เป็นแนวตั้งเต็มหน้าจอ*/
   .cards-row, 
   .tasks-layout, 
   .extra-layout {
