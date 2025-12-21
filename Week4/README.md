@@ -127,7 +127,7 @@ Footer
 กรอกข้อมูลหลังส่งงาน
 
 - **GitHub Repository:**  
-  https://github.com/Fifachaimong/engce301-2_68/edit/main/Week4/README.md
+  https://github.com/Fifachaimong/engce301-2_68/tree/main/Week4
 
 - **GitHub Pages URL:**  
   https://Fifachaimong.github.io/engce301-2_68/Week4/
