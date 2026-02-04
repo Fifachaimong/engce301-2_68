@@ -2,7 +2,7 @@
 // SERVICE LAYER - Products
 // ============================================
 
-const ProductDB = require('../database/products.db');
+const ProductDB = require('../database/products.db.js');
 
 class ProductService {
     // ===== GET ALL =====
@@ -36,15 +36,8 @@ class ProductService {
     // ⚠️ นักศึกษาเติม Validation
     static async createProduct(productData) {
         try {
-            // TODO: Validate required fields
-            // name, category_id, price, stock ต้องมีค่า
-            const product = await ProductDB.find
-            
-            // TODO: Validate price > 0
-            
-            
-            // TODO: Validate stock >= 0
-            
+            // Validate using helper method
+            this.validateProductData(productData);
             
             // Create product
             const newProduct = await ProductDB.create(productData);
@@ -58,8 +51,20 @@ class ProductService {
     // ⚠️ นักศึกษาเติมโค้ด
     static async updateProduct(id, productData) {
         try {
-            const product = await ProductDB.find
-            
+            // 1. Check if exists
+            const existingProduct = await ProductDB.findById(id);
+            if (!existingProduct) {
+                throw new Error('Product not found');
+            }
+
+            // 2. Validate
+            this.validateProductData(productData);
+
+            // 3. Update
+            await ProductDB.update(id, productData);
+
+            // 4. Return updated product
+            return await ProductDB.findById(id);
         } catch (error) {
             throw error;
         }
@@ -69,10 +74,18 @@ class ProductService {
     // ⚠️ นักศึกษาเติมโค้ดทั้งหมด
     static async deleteProduct(id) {
         try {
-            // TODO: เขียนโค้ดลบ product
+            const product = await ProductDB.findById(id);
+            if (!product) {
+                throw new Error('Product not found');
+            }
+
+            const result = await ProductDB.delete(id);
             
-            
-            
+            if (result.changes === 0) {
+                throw new Error('Failed to delete product');
+            }
+
+            return { message: 'Product deleted successfully' };
         } catch (error) {
             throw error;
         }

@@ -61,11 +61,15 @@ class ProductDatabase {
     }
 
     // ===== READ ONE =====
-    // ⚠️ นักศึกษาเติมโค้ด 30%
     static findById(id) {
         // TODO: เขียน SQL query ให้ JOIN กับ categories
         const sql = `
-            /* เติม SQL query ตรงนี้ */
+            SELECT 
+                p.*,
+                c.name as category_name
+            FROM products p
+            LEFT JOIN categories c ON p.category_id = c.id
+            WHERE p.id = ?
         `;
 
         return new Promise((resolve, reject) => {
@@ -82,55 +86,49 @@ class ProductDatabase {
     // ===== UPDATE =====
     // ⚠️ นักศึกษาเติมโค้ดทั้งหมด
     static update(id, productData) {
-        // TODO: เขียน SQL UPDATE query
         const sql = `
             UPDATE products
-            SET name = ?,category_id = ? ,price = ? ,stock = ? ,description = ?
+            SET name = ?,
+                category_id = ?,
+                price = ?,
+                stock = ?,
+                description = ?
             WHERE id = ?
         `;
 
         return new Promise((resolve, reject) => {
             db.run(
-                sql, [
-                productData.name,
-                productData.category_id,
-                productData.price,
-                productData.stock,
-                productData.description,
-                id
-            ],
+                sql,
+                [
+                    productData.name,
+                    productData.category_id,
+                    productData.price,
+                    productData.stock,
+                    productData.description,
+                    id
+                ],
                 function(err) {
                     if (err) {
                         reject(err);
                     } else {
-                        resolve({
-                            id: this.lastID,
-                            ...productData
-                        });
+                        resolve({ changes: this.changes });
                     }
                 }
-            )
-            // TODO: เติมโค้ด db.run
+            );
         });
     }
 
     // ===== DELETE =====
     // ⚠️ นักศึกษาเติมโค้ดทั้งหมด
     static delete(id) {
-        // TODO: เขียน SQL DELETE query
-        const sql = `
-            DELETE
-            FROM products
-            WHERE id = ?
-        `;
+        const sql = 'DELETE FROM products WHERE id = ?';
+
         return new Promise((resolve, reject) => {
-            db.run(sql, [id], (err, row) => {
+            db.run(sql, [id], function(err) {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve({
-                        
-                    });
+                    resolve({ changes: this.changes });
                 }
             });
         });
@@ -151,7 +149,13 @@ class ProductDatabase {
 
         return new Promise((resolve, reject) => {
             const searchTerm = `%${keyword}%`;
-            // TODO: เติมโค้ด db.all
+            db.all(sql, [searchTerm, searchTerm], (err, rows) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(rows);
+                }
+            });
             
         });
     }
