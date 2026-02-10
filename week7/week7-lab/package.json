@@ -8,7 +8,11 @@
     "dev": "nodemon server.js",
     "init-db": "node database/init-db.js"
   },
-  "keywords": ["library", "api", "sqlite"],
+  "keywords": [
+    "library",
+    "api",
+    "sqlite"
+  ],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
